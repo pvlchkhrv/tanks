@@ -20,3 +20,6 @@ export const MAP_LEGEND = {
     ENEMY_BASE: 2,
     WALL: 3
 }
+
+export const MAP_HEIGHT = 896
+export const MAP_WIDTH = 832

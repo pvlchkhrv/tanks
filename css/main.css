@@ -10,6 +10,7 @@ html {
     position: absolute;
     width: 64px;
     height: 64px;
+    transition: all 1s linear;
 }
 
 .game-object__player-tank {
@@ -27,10 +28,10 @@ html {
     background-size: contain;
 }
 .game-object__bullet {
-    height: 7px;
-    width: 7px;
+    height: 6px;
+    width: 6px;
     background: white;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 main {
@@ -54,10 +55,6 @@ main {
     flex: 1 30%;
     margin-left: 20px;
 }
-
-
-
-   
 
 .legend-list {
     padding: 0;
