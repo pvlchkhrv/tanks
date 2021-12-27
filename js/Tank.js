@@ -104,8 +104,11 @@ export class Tank extends GameObject {
   }
 
   fire() {
-    this.bullet = new Bullet(this);
-    store.dispatch(addBullet(this.bullet));
-    this.bullet.render();
+
+    if (!this.bullet) {
+      this.bullet = new Bullet(this);
+      store.dispatch(addBullet(this.bullet));
+      this.bullet.render();
+    }
   }
 }

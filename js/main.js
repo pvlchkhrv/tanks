@@ -117,7 +117,7 @@ function gameLoop() {
 function gameStep() {
   const map = new Map();
   map.update();
-  // console.log(store.getState());
+  // console.log(store.getState().walls);
   /**
    * это то самое место, где стоит делать основные шаги игрового цикла
    * например, как нам кажется, можно было бы сделать следующее

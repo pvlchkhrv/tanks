@@ -6,7 +6,6 @@ export class EnemyTank extends Tank{
     this.type = 'enemyTank';
     this.gameObject = this.createGameObjectElement('game-object__enemy-tank');
     this.direction = Math.floor(Math.random() * 4);
-    this.id = Date.now().toString();
   }
 
   chooseDirection() {
@@ -31,9 +30,5 @@ export class EnemyTank extends Tank{
       default:
         return;
     }
-  }
-
-  randomFire() {
-    setInterval(() => this.fire(), 6000)
   }
 }

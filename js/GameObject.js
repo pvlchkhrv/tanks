@@ -11,6 +11,7 @@ export class GameObject {
       right: position.left + 64,
       bottom: position.top + 64
     };
+    this.id = Date.now().toString() + Math.floor(Math.random() * 1000);
     this.gameObject = this.createGameObjectElement();
   }
 

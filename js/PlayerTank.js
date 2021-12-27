@@ -5,7 +5,6 @@ export class PlayerTank extends Tank{
     super(position);
     this.type = 'playerTank';
     this.gameObject = this.createGameObjectElement('game-object__player-tank');
-    this.id = Date.now().toString();
     this.direction = 0;
     this.#listen();
   }

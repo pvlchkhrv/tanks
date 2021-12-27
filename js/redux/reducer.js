@@ -15,7 +15,9 @@ export function reducer(state, action) {
     case ADD_WALL:
       return {...state, walls: [...state.walls, action.payload]};
     case DELETE_WALL:
-      return {...state, walls: [...state.walls.filter(wall => wall && wall.id !== action.payload)]};
+      return {...state, walls: [...state.walls.filter(wall => {
+         return  wall && wall.id !== action.payload
+        })]};
     case ADD_ENEMY_TANK:
       return {...state, enemyTanks: [...state.enemyTanks, action.payload]};
     case DELETE_ENEMY_TANK:
