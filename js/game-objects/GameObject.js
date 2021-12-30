@@ -1,4 +1,4 @@
-import {store} from './redux/store.js';
+import {MAP_LEGEND} from "../constants.js";
 
 export class GameObject {
   constructor(position) {
@@ -8,22 +8,22 @@ export class GameObject {
     this.borders = {
       top: position.top,
       left: position.left,
-      right: position.left + 64,
-      bottom: position.top + 64
+      right: position.left + MAP_LEGEND.BLOCK_SIZE,
+      bottom: position.top + MAP_LEGEND.BLOCK_SIZE
     };
     this.id = Date.now().toString() + Math.floor(Math.random() * 1000);
     this.gameObject = this.createGameObjectElement();
   }
 
   createGameObjectElement(additionalClassName) {
-    const instance = document.createElement('div');
-    instance.classList.add(this.className);
-    instance.style.top = this.borders.top + 'px';
-    instance.style.left = this.borders.left + 'px';
+    const gameObjectElement = document.createElement('div');
+    gameObjectElement.classList.add(this.className);
+    gameObjectElement.style.top = this.borders.top + 'px';
+    gameObjectElement.style.left = this.borders.left + 'px';
     if (additionalClassName) {
-      instance.classList.add(additionalClassName);
+      gameObjectElement.classList.add(additionalClassName);
     }
-    return instance;
+    return gameObjectElement;
   }
 
   moveObject(x, y) {

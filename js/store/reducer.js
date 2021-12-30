@@ -8,10 +8,13 @@ export const DELETE_ENEMY_TANK = 'DELETE_ENEMY_TANK';
 export const DELETE_PLAYER_TANK = 'DELETE_PLAYER_TANK';
 export const DELETE_BULLET = 'DELETE_BULLET';
 export const DELETE_WALL = 'DELETE_WALL';
+export const INITIALIZE = 'INITIALIZE';
 
 
 export function reducer(state, action) {
   switch(action.type) {
+    case INITIALIZE:
+      return {...action.payload};
     case ADD_WALL:
       return {...state, walls: [...state.walls, action.payload]};
     case DELETE_WALL:

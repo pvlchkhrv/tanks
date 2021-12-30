@@ -32,6 +32,7 @@ html {
     width: 6px;
     background: white;
     border-radius: 50%;
+    transition: none;
 }
 
 main {
@@ -70,4 +71,16 @@ main {
 .legend-item .game-object {
     top: 0;
     left: 0;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    top: 0;
+    left: 0;
+    font-size: xx-large;
 }

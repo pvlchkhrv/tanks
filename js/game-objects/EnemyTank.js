@@ -1,4 +1,5 @@
 import {Tank} from './Tank.js';
+import {DIRECTIONS} from '../constants.js';
 
 export class EnemyTank extends Tank{
   constructor(position) {
@@ -15,16 +16,16 @@ export class EnemyTank extends Tank{
 
   randomMove() {
     switch(this.direction) {
-      case 0:
+      case DIRECTIONS.TOP:
         !this.stepUp() && this.chooseDirection();
         break;
-      case 1:
+      case DIRECTIONS.BOTTOM:
         !this.stepDown() && this.chooseDirection();
         break;
-      case 2:
+      case DIRECTIONS.LEFT:
         !this.stepLeft() && this.chooseDirection();
         break;
-      case 3:
+      case DIRECTIONS.RIGHT:
         !this.stepRight() && this.chooseDirection();
         break;
       default:

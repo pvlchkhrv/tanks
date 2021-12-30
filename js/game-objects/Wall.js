@@ -6,10 +6,5 @@ export class Wall extends GameObject {
     this.type = 'wall';
     this.gameObject = this.createGameObjectElement('game-object__wall');
   }
-
-  handleBulletCollision() {
-
-  }
-
 }
 

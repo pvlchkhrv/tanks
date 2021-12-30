@@ -1,4 +1,5 @@
-import {reducer} from "./reducer.js";
+import {reducer} from './reducer.js';
+import {INITIAL_STATE} from '../constants.js';
 
 function createStore(reducer, initialState) {
   let currentReducer = reducer;
@@ -20,13 +21,4 @@ function createStore(reducer, initialState) {
   }
 }
 
-const initialState = {
-  lives: 3,
-  enemyTanksCount: 21,
-  enemyTanks: [],
-  walls: [],
-  playerTank: null,
-  bullets: []
-}
-
-export const store = createStore(reducer, initialState);
+export const store = createStore(reducer, INITIAL_STATE);
