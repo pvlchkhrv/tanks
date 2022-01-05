@@ -31,7 +31,11 @@ export class GameObject {
 
   hasObjectCollisions() {
     const state = store.getState();
-    const gameObjects = [...state.enemyTanks, ...state.walls, state.playerTank];
+    const gameObjects = [
+      ...state.enemyTanks.filter(tank => tank.id !== this.id),
+      ...state.walls,
+      state.playerTank];
+
     if (this.type === GAME_OBJECT_TYPES.PLAYER || this.type === GAME_OBJECT_TYPES.ENEMY) {
       switch (this.direction) {
         case DIRECTIONS.TOP:
