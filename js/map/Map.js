@@ -47,10 +47,10 @@ export class Map {
   }
 
   update() {
-    let enemyTanks = store.getState().enemyTanks;
+    const enemyTanks = store.getState().enemyTanks;
+    const lives = store.getState().lives;
+    const enemyTanksCount = store.getState().enemyTanksCount;
     let playerTank = store.getState().playerTank;
-    let lives = store.getState().lives;
-    let enemyTanksCount = store.getState().enemyTanksCount;
 
     // playerTank respawn
     if (!playerTank) {
@@ -61,7 +61,7 @@ export class Map {
 
     // enemy tanks respawn
     if (enemyTanks.length < 3) {
-      const random = Math.floor(Math.random() * 3);
+      const random = Math.floor(Math.random() * MAP_LEGEND.ENEMY_COUNT);
       const enemyTank = new EnemyTank(MAP_LEGEND.ENEMY_BASE_COORDINATES[random]);
       enemyTank.gameObject.style.transform = 'rotate(180deg)';
       store.dispatch(addEnemyTank(enemyTank));

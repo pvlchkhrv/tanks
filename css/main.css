@@ -10,17 +10,18 @@ html {
     position: absolute;
     width: 64px;
     height: 64px;
-    transition: all 1s linear;
 }
 
 .game-object__player-tank {
     background: url('../img/player-tank.png');
     background-size: contain;
+    transition: left 1s linear, top 1s linear;
 }
 
 .game-object__enemy-tank {
     background: url('../img/enemy-tank.png');
     background-size: contain;
+    transition: left 1s linear, top 1s linear;
 }
 
 .game-object__wall {
@@ -32,7 +33,6 @@ html {
     width: 6px;
     background: white;
     border-radius: 50%;
-    transition: none;
 }
 
 main {

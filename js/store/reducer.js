@@ -10,22 +10,25 @@ export const DELETE_BULLET = 'DELETE_BULLET';
 export const DELETE_WALL = 'DELETE_WALL';
 export const INITIALIZE = 'INITIALIZE';
 
-
 export function reducer(state, action) {
-  switch(action.type) {
+  switch (action.type) {
     case INITIALIZE:
       return {...action.payload};
     case ADD_WALL:
       return {...state, walls: [...state.walls, action.payload]};
     case DELETE_WALL:
-      return {...state, walls: [...state.walls.filter(wall => {
-         return  wall && wall.id !== action.payload
-        })]};
+      return {
+        ...state, walls: [...state.walls.filter(wall => {
+          return wall && wall.id !== action.payload
+        })]
+      };
     case ADD_ENEMY_TANK:
       return {...state, enemyTanks: [...state.enemyTanks, action.payload]};
     case DELETE_ENEMY_TANK:
-      return {...state,
-        enemyTanks: [...state.enemyTanks.filter(enemyTank => enemyTank && enemyTank.id !== action.payload)]};
+      return {
+        ...state,
+        enemyTanks: [...state.enemyTanks.filter(enemyTank => enemyTank && enemyTank.id !== action.payload)]
+      };
     case ADD_PLAYER_TANK:
       return {...state, playerTank: action.payload};
     case DELETE_PLAYER_TANK:
@@ -36,7 +39,7 @@ export function reducer(state, action) {
       return {...state, bullets: [...state.bullets.filter(bullet => bullet && bullet.id !== action.payload)]};
     case DECREMENT_LIVES:
       return {...state, lives: state.lives - 1};
-      case DECREMENT_ENEMY_TANKS_COUNT:
+    case DECREMENT_ENEMY_TANKS_COUNT:
       return {...state, enemyTanksCount: state.enemyTanksCount - 1};
     default:
       return state;

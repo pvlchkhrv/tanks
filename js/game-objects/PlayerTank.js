@@ -1,80 +1,49 @@
 import {Tank} from './Tank.js';
-import {DIRECTIONS} from '../constants.js';
+import {CONTROL_CODES, DIRECTIONS, GAME_OBJECT_TYPES} from '../constants.js';
 
 export class PlayerTank extends Tank {
   constructor(position) {
     super(position);
-    this.type = 'playerTank';
+    this.type = GAME_OBJECT_TYPES.PLAYER;
     this.gameObject = this.createGameObjectElement('game-object__player-tank');
-    this.direction = DIRECTIONS.TOP;
-    this.#listen();
     this.pressedControls = [];
+    this.#listen();
   }
 
   #listen() {
     document.addEventListener('keydown', ({code}) => {
-      if (
-        code === 'ArrowUp' ||
-        code === 'ArrowDown' ||
-        code === 'ArrowRight' ||
-        code === 'ArrowLeft'
-      ) {
+      if (CONTROL_CODES.find(control => code === control)) {
         this.pressedControls.push(code);
       } else if (code === 'Space') {
         this.fire();
       }
+    });
 
-      // switch (code) {
-      //   case 'ArrowUp':
-      //     this.pressedControls.push(code);
-      //     break;
-      //   case 'ArrowDown':
-      //     this.direction = DIRECTIONS.BOTTOM;
-      //     this.stepDown();
-      //     break;
-      //   case 'ArrowRight':
-      //     this.direction = DIRECTIONS.RIGHT;
-      //     this.stepRight();
-      //     break;
-      //   case 'ArrowLeft':
-      //     this.direction = DIRECTIONS.LEFT;
-      //     this.stepLeft();
-      //     break;
-      //   case 'Space':
-      //     this.fire();
-      //     break;
-      //   default:
-      //     return;
-      // }
+    document.addEventListener('keyup', ({code}) => {
+      if (CONTROL_CODES.find(control => code === control)) {
+        this.pressedControls = this.pressedControls.filter(control => control !== code);
+      }
     });
   }
 
   move() {
-    switch (this.pressedControls[this.pressedControls.length - 1]) {
-      case 'ArrowUp':
+    switch (this.pressedControls [this.pressedControls.length - 1]) {
+      case CONTROL_CODES[0]:
         this.direction = DIRECTIONS.TOP;
         this.stepUp();
-        this.pressedControls = [];
         break;
-      case 'ArrowDown':
+      case CONTROL_CODES[1]:
         this.direction = DIRECTIONS.BOTTOM;
         this.stepDown();
-        this.pressedControls = [];
         break;
-      case 'ArrowRight':
+      case CONTROL_CODES[2]:
         this.direction = DIRECTIONS.RIGHT;
         this.stepRight();
-        this.pressedControls = [];
         break;
-      case 'ArrowLeft':
+      case CONTROL_CODES[3]:
         this.direction = DIRECTIONS.LEFT;
         this.stepLeft();
-        this.pressedControls = [];
         break;
-      // case 'Space':
-      //   this.fire();
-      //   this.pressedControls = [];
-      //   break;
       default:
         return;
     }

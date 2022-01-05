@@ -1,8 +1,6 @@
 import {store} from './store/store.js';
 import {Map} from './map/Map.js';
-
-var GAME_TIMER_INTERVAL = 1000; // задаёт интервал времени, за который будет выполняться один шаг в игре
-var IS_GAME_OVER = false;
+import {GAME_TIMER_INTERVAL, IS_GAME_OVER} from './constants.js';
 
 const map = new Map();
 gameInitialization();
@@ -20,7 +18,6 @@ function gameLoop() {
       gameLoop()
     }, GAME_TIMER_INTERVAL);
   }
-
 }
 
 function gameStep() {
@@ -40,19 +37,5 @@ function gameStep() {
     map.update()
   }
 }
-
-
-// let lastRenderTime1 = 0;
-// const TANK_SPEED = 1;
-//
-// function gameStep(currentTime) {
-//   window.requestAnimationFrame(gameStep);
-//   const secondsSinceLastRender = (currentTime - lastRenderTime1) / 1000;
-//   if (secondsSinceLastRender < 1 / TANK_SPEED) return
-//   lastRenderTime1 = currentTime;
-//   const map = new Map();
-//   map.update()
-// }
-// window.requestAnimationFrame(gameStep);
 
 

@@ -1,16 +1,17 @@
 import {Tank} from './Tank.js';
-import {DIRECTIONS} from '../constants.js';
+import {DIRECTIONS, GAME_OBJECT_TYPES} from '../constants.js';
+import {getRandomDirection} from '../helpers.js';
 
 export class EnemyTank extends Tank{
   constructor(position) {
     super(position);
-    this.type = 'enemyTank';
+    this.type = GAME_OBJECT_TYPES.ENEMY;
     this.gameObject = this.createGameObjectElement('game-object__enemy-tank');
-    this.direction = Math.floor(Math.random() * 4);
+    this.direction = getRandomDirection();
   }
 
   chooseDirection() {
-    this.direction = Math.floor(Math.random() * 4);
+    this.direction = getRandomDirection();
     this.randomMove();
   }
 
