@@ -60,7 +60,7 @@ export class Map {
     }
 
     // enemy tanks respawn
-    if (enemyTanks.length < 3) {
+    if (enemyTanks.length < MAP_LEGEND.ENEMY_COUNT) {
       const random = Math.floor(Math.random() * MAP_LEGEND.ENEMY_COUNT);
       const enemyTank = new EnemyTank(MAP_LEGEND.ENEMY_BASE_COORDINATES[random]);
       enemyTank.gameObject.style.transform = 'rotate(180deg)';
